@@ -1,0 +1,23 @@
+# Definition for a binary tree node.
+class TreeNode(object):
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+def rec(ln,rn):
+    if ln==None and rn==None:
+        return True
+    elif ln==None or rn==None:
+        return False
+    if ln.val!=rn.val:
+        return False
+    l = rec(ln.left,rn.right)
+    r = rec(ln.right,rn.left)
+    
+    return l and r
+
+class Solution:
+    def isSymmetric(self, root):
+        if not root:
+            return True
+        return rec(root.left,root.right)
